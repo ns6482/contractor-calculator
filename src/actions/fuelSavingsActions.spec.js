@@ -22,7 +22,7 @@ describe('Actions', () => {
 
   it('should create an action to save fuel savings', () => {
     const expected = {
-      type: ActionTypes.SAVE_FUEL_SAVINGS,
+      type: ActionTypes.SAVE_CONFIGURATION,
       settings: appState
     };
 
@@ -35,7 +35,7 @@ describe('Actions', () => {
     const value = 100;
 
     const expected = {
-      type: ActionTypes.CALCULATE_FUEL_SAVINGS,
+      type: ActionTypes.CALCULATE_TAKE_HOME_PAY,
       settings: appState,
       fieldName,
       value
