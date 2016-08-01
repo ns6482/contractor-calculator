@@ -1,11 +1,8 @@
 export default {
-  fuelSavings: {
-    newMpg: '',
-    tradeMpg: '',
-    newPpg: '',
-    tradePpg: '',
-    milesDriven: '',
-    milesDrivenTimeframe: 'week',
+  contractorCalculator: {
+    dayRate: '',
+    wages: '',
+    expenses: '',
     displayResults: false,
     dateModified: null,
     necessaryDataIsProvidedToCalculateSavings: false,

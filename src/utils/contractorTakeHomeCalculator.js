@@ -2,13 +2,19 @@
 
 class ContractTakeHomeCalculator {
 
-  static calculate() {
-    const dayrate = 400;
-    const weeks = 46;
+  static necessaryDataIsProvidedToCalculateSavings (settings) {
+    return settings.dateRate > 0
+      && settings.weeks > 0
+      && settings.wages > 0
+      && settings.expenses > 0;
+  }
+
+  static calculate(settings) {
+
+    const {dayrate, weeks, wages, expenses} = settings;
+
     const days = 5;
-    const wages = 8040; //8060 no NI,, todo allow second salary
     const paLimit = 11000;
-    const expenses = 5000;
     const divTaxFreeAllowance = 5000;
     const taxRate = 0.20;
 
@@ -17,6 +23,11 @@ class ContractTakeHomeCalculator {
 
     const basicTaxRate = 0.075;
     const higherTaxRate = 0.325;
+
+    // let dayrate = 400;
+    // let weeks = 46;
+    // let wages = 8040; //8060 no NI,, todo allow second salary
+    // let expenses = 5000;
 
     let grossEarned = ((dayrate * days) * weeks);
     let profitBeforeTax = grossEarned  - wages - expenses
@@ -40,15 +51,15 @@ class ContractTakeHomeCalculator {
 
     return {
       grossEarned: grossEarned,
-      salary: wages,
-      expenses: expenses,
+      // salary: wages,
+      // expenses: expenses,
       corpTax: corporationTax,
       profitAfterTax: profitAfterTax,
-      basic: basic,
+      // basic: basic,
       personalAllowanceLeft: personalAllowanceLeft,
       basicTaxable: basicTaxable,
       tax1: tax1,
-      higher: higher,
+      // higher: higher,
       tax2: tax2,
       divToTax: divToTax,
       takeHome:takeHome,
@@ -58,7 +69,3 @@ class ContractTakeHomeCalculator {
 
   }
 }
-
-let result = ContractTakeHomeCalculator.calculate();
-
-console.log(JSON.stringify(result));
