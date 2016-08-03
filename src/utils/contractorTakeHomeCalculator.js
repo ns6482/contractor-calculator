@@ -1,9 +1,10 @@
-// Code goes here
+import mathHelper from './mathHelper';
+import NumberFormatter from './numberFormatter';
 
 class ContractTakeHomeCalculator {
 
   static necessaryDataIsProvidedToCalculateSavings (settings) {
-    return settings.dateRate > 0
+    return settings.dayRate > 0
       && settings.weeks > 0
       && settings.wages > 0
       && settings.expenses > 0;
@@ -50,21 +51,21 @@ class ContractTakeHomeCalculator {
     let percTakeHome = (takeHomeAfterPersonalTax/grossEarned) * 100;
 
     return {
-      grossEarned: grossEarned,
+      grossEarned:  NumberFormatter.getCurrencyFormattedNumber(grossEarned),
       // salary: wages,
       // expenses: expenses,
-      corpTax: corporationTax,
-      profitAfterTax: profitAfterTax,
+      corpTax:  NumberFormatter.getCurrencyFormattedNumber(corporationTax),
+      profitAfterTax:  NumberFormatter.getCurrencyFormattedNumber(profitAfterTax),
       // basic: basic,
-      personalAllowanceLeft: personalAllowanceLeft,
-      basicTaxable: basicTaxable,
-      tax1: tax1,
+      personalAllowanceLeft:  NumberFormatter.getCurrencyFormattedNumber(personalAllowanceLeft),
+      basicTaxable:  NumberFormatter.getCurrencyFormattedNumber(basicTaxable),
+      tax1:  NumberFormatter.getCurrencyFormattedNumber(tax1),
       // higher: higher,
-      tax2: tax2,
-      divToTax: divToTax,
-      takeHome:takeHome,
-      takeHomeAfterPersonalTax: takeHomeAfterPersonalTax,
-      percTakeHome: percTakeHome
+      tax2:  NumberFormatter.getCurrencyFormattedNumber(tax2),
+      divToTax:  NumberFormatter.getCurrencyFormattedNumber(divToTax),
+      takeHome: NumberFormatter.getCurrencyFormattedNumber(takeHome),
+      takeHomeAfterPersonalTax:  NumberFormatter.getCurrencyFormattedNumber(takeHomeAfterPersonalTax),
+      percTakeHome: NumberFormatter.getCurrencyFormattedNumber(percTakeHome)
     }
 
   }

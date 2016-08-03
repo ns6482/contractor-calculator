@@ -2,26 +2,25 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions from '../actions/contractorCalculatorActions';
-import FuelSavingsForm from '../components/FuelSavingsForm';
+import ContractCalculatorForm from '../components/ContractCalculatorForm';
 
-export const FuelSavingsPage = (props) => {
+export const ContractCalculatorPage = (props) => {
   return (
-    <FuelSavingsForm
-      saveFuelSavings={props.actions.saveFuelSavings}
-      calculateFuelSavings={props.actions.calculateFuelSavings}
-      fuelSavings={props.fuelSavings}
+    <ContractCalculatorForm
+      calculate={props.actions.calculator}
+      results={props.contractorCalculator}
     />
   );
 };
 
 FuelSavingsPage.propTypes = {
   actions: PropTypes.object.isRequired,
-  fuelSavings: PropTypes.object.isRequired
+  contractCalculator: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
   return {
-    fuelSavings: state.fuelSavings
+    contractorCalculator: state.contractorCalculator
   };
 }
 
@@ -34,4 +33,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(FuelSavingsPage);
+)(ContractCalculatorPage);

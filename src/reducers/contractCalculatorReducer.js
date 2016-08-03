@@ -9,7 +9,7 @@ import initialState from './initialState';
 // create a copy of the state passed and set new values on the copy.
 // Note that I'm using Object.assign to create a copy of current state
 // and update values on the copy.
-export default function fuelSavingsReducer(state = initialState.fuelSavings, action) {
+export default function contractCalculatorReducer(state = initialState.contractorCalculator, action) {
   let newState;
 
   switch (action.type) {
@@ -25,7 +25,7 @@ export default function fuelSavingsReducer(state = initialState.fuelSavings, act
       newState.dateModified = dateHelper.getFormattedDateTime(new Date());
 
       if (newState.necessaryDataIsProvidedToCalculateSavings) {
-        newState.savings = calculator().(newState);
+        newState.results = calculator().calculate(newState);
       }
 
       return newState;
