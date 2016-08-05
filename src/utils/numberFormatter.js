@@ -6,7 +6,7 @@ class NumberFormatter {
       return '';
     }
 
-    return '$' + this.getFormattedNumber(value); // eslint-disable-line prefer-template
+    return '£' + this.getFormattedNumber(value); // eslint-disable-line prefer-template
   }
 
   static getFormattedNumber(value) {

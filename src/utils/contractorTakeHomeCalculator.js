@@ -7,7 +7,7 @@ export default class ContractTakeHomeCalculator {
     return settings.dayRate > 0
       && settings.weeks > 0
       && settings.wages > 0
-      && settings.expenses > 0;
+      && settings.expenses >= 0;
   }
 
   static calculate(settings) {
@@ -31,7 +31,7 @@ export default class ContractTakeHomeCalculator {
     // let expenses = 5000;
 
     let grossEarned = ((dayRate * days) * weeks);
-    let profitBeforeTax = grossEarned  - wages - expenses
+    let profitBeforeTax = grossEarned - wages - expenses;//grossEarned  - (wages + expenses);
     let corporationTax = (profitBeforeTax * taxRate);
     let profitAfterTax = profitBeforeTax - corporationTax;
 
@@ -45,8 +45,8 @@ export default class ContractTakeHomeCalculator {
 
     let divToTax = tax1 + tax2;
 
-    let takeHome = profitAfterTax + wages;
-    let takeHomeAfterPersonalTax = takeHome - divToTax;
+    let takeHome = parseFloat(profitAfterTax) + parseFloat(wages);
+    let takeHomeAfterPersonalTax = parseFloat(takeHome) - parseFloat(divToTax);
 
     let percTakeHome = (takeHomeAfterPersonalTax/grossEarned) * 100;
 
@@ -54,6 +54,8 @@ export default class ContractTakeHomeCalculator {
       grossEarned:  NumberFormatter.getCurrencyFormattedNumber(grossEarned),
       // salary: wages,
       // expenses: expenses,
+
+      profitBeforeTax:  NumberFormatter.getCurrencyFormattedNumber(profitBeforeTax),
       corpTax:  NumberFormatter.getCurrencyFormattedNumber(corporationTax),
       profitAfterTax:  NumberFormatter.getCurrencyFormattedNumber(profitAfterTax),
       // basic: basic,
@@ -65,7 +67,7 @@ export default class ContractTakeHomeCalculator {
       divToTax:  NumberFormatter.getCurrencyFormattedNumber(divToTax),
       takeHome: NumberFormatter.getCurrencyFormattedNumber(takeHome),
       takeHomeAfterPersonalTax:  NumberFormatter.getCurrencyFormattedNumber(takeHomeAfterPersonalTax),
-      percTakeHome: NumberFormatter.getCurrencyFormattedNumber(percTakeHome)
+      percTakeHome: `${percTakeHome.toFixed(0)}%`
     }
 
   }

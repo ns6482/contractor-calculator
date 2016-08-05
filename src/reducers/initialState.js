@@ -1,11 +1,13 @@
 export default {
   contractorCalculator: {
-    dayRate: 0,
+    dayRate: null,
+    weeks: 46,
     grossEarned: 0,
-    salary: 0,
-    expenses: 0,
+    wages: 8040,
+    expenses: 5000,
     results: {
       corpTax: 0,
+      profitBeforeTax: 0,
       profitAfterTax: 0,
       personalAllowanceLeft: 0,
       basicTaxable: 0,

@@ -11,26 +11,59 @@ const Results = ({results}) => {
   // composed within the parentheses. Return is necessary here because some
   // variables are set above.
   return (
+
     <table>
+      <thead>
+      <tr>
+        <td></td>
+        <td>Annual</td>
+        <td>Monthly</td>
+      </tr>
+      </thead>
       <tbody>
       <tr>
-        <td>
-          <table>
-            <tbody>
-            <tr>
-              <td>Take Home Pay</td>
-              <td>Percentage Take Home Pay</td>
-            </tr>
-            <tr>
-              <td>{results.takeHome}</td>
-              <td>{results.percTakeHome}</td>
-            </tr>
-            </tbody>
-          </table>
-        </td>
+        <td>Turnover</td>
+        <td>{results.grossEarned}</td>
+      </tr>
+      <tr>
+        <td>Profit before tax</td>
+        <td>{results.profitBeforeTax}</td>
+      </tr>
+      <tr>
+        <td>Corporation Tax 20%</td>
+        <td>{results.corpTax}</td>
+      </tr>
+      <tr>
+        <td>Profit after tax</td>
+        <td>{results.profitAfterTax}</td>
+      </tr>
+      <tr>
+        <td>Basic Rate Tax (7.5%)</td>
+        <td>{results.tax1}</td>
+      </tr>
+      <tr>
+        <td>Higher Rate Tax (32.5%)</td>
+        <td>{results.tax2}</td>
+      </tr>
+      <tr>
+        <td>Total Divedand Tax</td>
+        <td>{results.divToTax}</td>
+      </tr>
+      <tr>
+        <td>Take Home Pay</td>
+        <td>{results.takeHome}</td>
+      </tr>
+      <tr>
+        <td>Take Home Pay After Tax</td>
+        <td>{results.takeHomeAfterPersonalTax}</td>
+      </tr>
+      <tr>
+        <td>Percentage Take Home Pay</td>
+        <td>{results.percTakeHome}</td>
       </tr>
       </tbody>
     </table>
+
   );
 };
 
