@@ -1,19 +1,17 @@
 import React, {PropTypes} from 'react';
-import FuelSavingsResults from './Results';
+import Results from './Results';
 import FuelSavingsTextInput from './FuelSavingsTextInput';
 
-class FuelSavingsForm extends React.Component {
+class ContractCalculatorForm extends React.Component {
   constructor(props, context) {
     super(props, context);
 
     this.save = this.save.bind(this);
-    this.onTimeframeChange = this.onTimeframeChange.bind(this);
     this.calculatorKeypress = this.calculatorKeypress.bind(this);
   }
 
-
   calculatorKeypress(name, value) {
-    this.props.calculator(this.props.contractorCalculator, name, value);
+    this.props.calculate(this.props.contractorCalculator, name, value);
   }
 
   save() {
@@ -64,10 +62,10 @@ class FuelSavingsForm extends React.Component {
   }
 }
 
-FuelSavingsForm.propTypes = {
+ContractCalculatorForm.propTypes = {
   save: PropTypes.func.isRequired,
-  calculator: PropTypes.func.isRequired,
+  calculate: PropTypes.func.isRequired,
   contractorCalculator: PropTypes.object.isRequired
 };
 
-export default FuelSavingsForm;
+export default ContractCalculatorForm;

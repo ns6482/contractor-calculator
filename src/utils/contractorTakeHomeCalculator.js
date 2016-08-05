@@ -1,7 +1,7 @@
 import mathHelper from './mathHelper';
 import NumberFormatter from './numberFormatter';
 
-class ContractTakeHomeCalculator {
+export default class ContractTakeHomeCalculator {
 
   static necessaryDataIsProvidedToCalculateSavings (settings) {
     return settings.dayRate > 0
@@ -12,7 +12,7 @@ class ContractTakeHomeCalculator {
 
   static calculate(settings) {
 
-    const {dayrate, weeks, wages, expenses} = settings;
+    const {dayRate, weeks, wages, expenses} = settings;
 
     const days = 5;
     const paLimit = 11000;
@@ -30,7 +30,7 @@ class ContractTakeHomeCalculator {
     // let wages = 8040; //8060 no NI,, todo allow second salary
     // let expenses = 5000;
 
-    let grossEarned = ((dayrate * days) * weeks);
+    let grossEarned = ((dayRate * days) * weeks);
     let profitBeforeTax = grossEarned  - wages - expenses
     let corporationTax = (profitBeforeTax * taxRate);
     let profitAfterTax = profitBeforeTax - corporationTax;

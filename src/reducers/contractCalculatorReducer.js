@@ -21,11 +21,11 @@ export default function contractCalculatorReducer(state = initialState.contracto
     case CALCULATE_TAKE_HOME_PAY:
       newState = objectAssign({}, state);
       newState[action.fieldName] = action.value;
-      newState.necessaryDataIsProvidedToCalculateSavings = calculator().necessaryDataIsProvidedToCalculateSavings(newState);
+      newState.necessaryDataIsProvidedToCalculateSavings = calculator.necessaryDataIsProvidedToCalculateSavings(newState);
       newState.dateModified = dateHelper.getFormattedDateTime(new Date());
 
       if (newState.necessaryDataIsProvidedToCalculateSavings) {
-        newState.results = calculator().calculate(newState);
+        newState.results = calculator.calculate(newState);
       }
 
       return newState;

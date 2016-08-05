@@ -7,15 +7,16 @@ import ContractCalculatorForm from '../components/ContractCalculatorForm';
 export const ContractCalculatorPage = (props) => {
   return (
     <ContractCalculatorForm
-      calculate={props.actions.calculator}
-      results={props.contractorCalculator}
+      save={props.actions.saveTakeHomePay}
+      calculate={props.actions.calculatorTakeHomePay}
+      contractorCalculator={props.contractorCalculator}
     />
   );
 };
 
-FuelSavingsPage.propTypes = {
+ContractCalculatorPage.propTypes = {
   actions: PropTypes.object.isRequired,
-  contractCalculator: PropTypes.object.isRequired
+  contractorCalculator: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
