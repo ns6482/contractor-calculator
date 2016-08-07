@@ -1,6 +1,8 @@
 import React, {PropTypes} from 'react';
 import Results from './Results';
 import FuelSavingsTextInput from './FuelSavingsTextInput';
+// import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+// import {RaisedButton} from 'material-ui';
 
 class ContractCalculatorForm extends React.Component {
   constructor(props, context) {
@@ -46,17 +48,24 @@ class ContractCalculatorForm extends React.Component {
             <td><FuelSavingsTextInput onChange={this.calculatorKeypress} name="expenses" value={contractorCalculator.expenses}/>
             </td>
           </tr>
-          <tr>
-            <td><label>Date Modified</label></td>
-            <td>{contractorCalculator.dateModified}</td>
-          </tr>
+          {/*<tr>*/}
+            {/*<td><label>Date Modified</label></td>*/}
+            {/*<td>{contractorCalculator.dateModified}</td>*/}
+          {/*</tr>*/}
           </tbody>
         </table>
 
         <hr/>
 
         {contractorCalculator.necessaryDataIsProvidedToCalculateSavings && <Results results={contractorCalculator.results}/>}
-        <input type="submit" value="Save" onClick={this.save}/>
+        {/*<input type="submit" value="Save" onClick={this.save}/>*/}
+
+          {/*<MuiThemeProvider>*/}
+            {/*<RaisedButton type="submit" label="Save" onClick={this.save}/>*/}
+
+          {/*</MuiThemeProvider>*/}
+
+
       </div>
     );
   }

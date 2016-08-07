@@ -1,7 +1,7 @@
 import {SAVE_CONFIGURATION, CALCULATE_TAKE_HOME_PAY} from '../constants/actionTypes';
 import calculator from '../utils/contractorTakeHomeCalculator';
 import dateHelper from '../utils/dateHelper';
-import objectAssign from 'object-assign';
+// import objectAssign from 'object-assign';
 import initialState from './initialState';
 
 // IMPORTANT: Note that with Redux, state should NEVER be changed.
@@ -16,10 +16,10 @@ export default function contractCalculatorReducer(state = initialState.contracto
     case SAVE_CONFIGURATION:
       // For this example, just simulating a save by changing date modified.
       // In a real app using Redux, you might use redux-thunk and handle the async call in contractorCalculatorActions.js
-      return objectAssign({}, state, {dateModified: dateHelper.getFormattedDateTime(new Date())});
+      return Object.assign({}, state, {dateModified: dateHelper.getFormattedDateTime(new Date())});
 
     case CALCULATE_TAKE_HOME_PAY:
-      newState = objectAssign({}, state);
+      newState = Object.assign({}, state);
       newState[action.fieldName] = action.value;
       newState.necessaryDataIsProvidedToCalculateSavings = calculator.necessaryDataIsProvidedToCalculateSavings(newState);
       newState.dateModified = dateHelper.getFormattedDateTime(new Date());

@@ -1,17 +1,23 @@
 import React, {PropTypes} from 'react';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import  {TextField} from 'material-ui';
 
 const FuelSavingsTextInput = (props) => {
+
   const handleChange = (e) => {
     props.onChange(props.name, e.target.value);
   };
 
   return (
-    <input
+    <MuiThemeProvider>
+
+    <TextField
       className="small"
       type="text"
       placeholder={props.placeholder}
       value={props.value}
       onChange={handleChange}/>
+      </MuiThemeProvider>
   );
 };
 
