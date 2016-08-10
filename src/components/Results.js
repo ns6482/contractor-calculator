@@ -1,5 +1,8 @@
 import React, {PropTypes} from 'react';
-import NumberFormatter from '../utils/numberFormatter';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import {List, ListItem} from 'material-ui/List';
+import Subheader from 'material-ui/Subheader';
+import Toggle from 'material-ui/Toggle';
 
 // This is a stateless functional component. (Also known as pure or dumb component)
 // More info: https://facebook.github.io/react/blog/2015/10/07/react-v0.14.html#stateless-functional-components
@@ -11,59 +14,25 @@ const Results = ({results}) => {
   // composed within the parentheses. Return is necessary here because some
   // variables are set above.
   return (
-
-    <table>
-      <thead>
-      <tr>
-        <td></td>
-        <td>Annual</td>
-        <td>Monthly</td>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td>Turnover</td>
-        <td>{results.grossEarned}</td>
-      </tr>
-      <tr>
-        <td>Profit before tax</td>
-        <td>{results.profitBeforeTax}</td>
-      </tr>
-      <tr>
-        <td>Corporation Tax 20%</td>
-        <td>{results.corpTax}</td>
-      </tr>
-      <tr>
-        <td>Profit after tax</td>
-        <td>{results.profitAfterTax}</td>
-      </tr>
-      <tr>
-        <td>Basic Rate Tax (7.5%)</td>
-        <td>{results.tax1}</td>
-      </tr>
-      <tr>
-        <td>Higher Rate Tax (32.5%)</td>
-        <td>{results.tax2}</td>
-      </tr>
-      <tr>
-        <td>Total Divedand Tax</td>
-        <td>{results.divToTax}</td>
-      </tr>
-      <tr>
-        <td>Take Home Pay</td>
-        <td>{results.takeHome}</td>
-      </tr>
-      <tr>
-        <td>Take Home Pay After Tax</td>
-        <td>{results.takeHomeAfterPersonalTax}</td>
-      </tr>
-      <tr>
-        <td>Percentage Take Home Pay</td>
-        <td>{results.percTakeHome}</td>
-      </tr>
-      </tbody>
-    </table>
-
+      <MuiThemeProvider>
+        <List>
+          <Toggle
+            label="Show more detail"
+          />
+          <ListItem>Turnover: <strong>{results.grossEarned}</strong></ListItem>
+          <ListItem>Profit before tax: {results.profitBeforeTax}</ListItem>
+          <ListItem>Corporation Tax 20%: {results.corpTax}</ListItem>
+          <ListItem>Profit after tax: {results.profitAfterTax}</ListItem>
+          <Subheader>Dividand Tax</Subheader>
+          <ListItem>Basic Rate Tax (7.5%): {results.tax1}</ListItem>
+          <ListItem>Higher Rate Tax (32.5%): {results.tax2}</ListItem>
+          <ListItem>Total Dividand Tax: {results.divToTax}</ListItem>
+          <Subheader>Total</Subheader>
+          <ListItem>Take Home Pay: {results.takeHome}</ListItem>
+          <ListItem>Take Home Pay After Tax: {results.takeHomeAfterPersonalTax}</ListItem>
+          <h2>Percentage Take Home Pay: {results.percTakeHome}</h2>
+        </List>
+      </MuiThemeProvider>
   );
 };
 

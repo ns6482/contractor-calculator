@@ -10,14 +10,13 @@ const FuelSavingsTextInput = (props) => {
 
   return (
     <MuiThemeProvider>
-
-    <TextField
-      className="small"
-      type="text"
-      placeholder={props.placeholder}
-      value={props.value}
-      onChange={handleChange}/>
-      </MuiThemeProvider>
+      <TextField
+        className="small"
+        type="text"
+        placeholder={props.placeholder}
+        value={props.value}
+        onChange={handleChange}/>
+    </MuiThemeProvider>
   );
 };
 
