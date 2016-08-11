@@ -5,6 +5,7 @@ export default {
     grossEarned: 0,
     wages: 8040,
     expenses: 5000,
+    advanced: false,
     results: {
       corpTax: 0,
       profitBeforeTax: 0,

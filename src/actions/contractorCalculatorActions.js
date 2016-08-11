@@ -7,3 +7,7 @@ export function saveTakeHomePay(settings) {
 export function calculatorTakeHomePay(settings, fieldName, value) {
   return {type: types.CALCULATE_TAKE_HOME_PAY, settings, fieldName, value};
 }
+
+export function toggleAdvance (settings)  {
+  return {type: types.TOGGLE_ADVANCED, settings};
+}

@@ -1,4 +1,4 @@
-import {SAVE_CONFIGURATION, CALCULATE_TAKE_HOME_PAY} from '../constants/actionTypes';
+import {SAVE_CONFIGURATION, CALCULATE_TAKE_HOME_PAY, TOGGLE_ADVANCED} from '../constants/actionTypes';
 import calculator from '../utils/contractorTakeHomeCalculator';
 import dateHelper from '../utils/dateHelper';
 // import objectAssign from 'object-assign';
@@ -18,6 +18,11 @@ export default function contractCalculatorReducer(state = initialState.contracto
       // In a real app using Redux, you might use redux-thunk and handle the async call in contractorCalculatorActions.js
       return Object.assign({}, state, {dateModified: dateHelper.getFormattedDateTime(new Date())});
 
+    case TOGGLE_ADVANCED:
+      newState = Object.assign({}, state);
+      newState.advanced = !newState.advanced;
+      return newState;
+
     case CALCULATE_TAKE_HOME_PAY:
       newState = Object.assign({}, state);
       newState[action.fieldName] = action.value;
@@ -29,6 +34,7 @@ export default function contractCalculatorReducer(state = initialState.contracto
       }
 
       return newState;
+
 
     default:
       return state;

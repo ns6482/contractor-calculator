@@ -4,7 +4,7 @@ import {expect} from 'chai';
 describe('Number Formatter', () => {
   describe('getCurrencyFormattedNumber', () => {
     it('returns $5.50 when passed 5.5', () => {
-      expect(NumberFormatter.getCurrencyFormattedNumber(5.5)).to.equal('$5.50');
+      expect(NumberFormatter.getCurrencyFormattedNumber(5.5)).to.equal('£5.50');
     });
   });
 
