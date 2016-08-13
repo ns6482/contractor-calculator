@@ -13,6 +13,7 @@ const FuelSavingsTextInput = (props) => {
       <TextField
         className="small"
         type="text"
+        floatingLabelText={props.floatingLabelText}
         placeholder={props.placeholder}
         value={props.value}
         onChange={handleChange}/>
@@ -24,6 +25,7 @@ FuelSavingsTextInput.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
+  floatingLabelText: PropTypes.string,
   value: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number

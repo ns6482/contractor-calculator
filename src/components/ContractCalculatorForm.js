@@ -31,74 +31,51 @@ class ContractCalculatorForm extends React.Component {
     return (
       <div>
         <h2>Take Home Pay Calculator</h2>
-        <table>
-          <tbody>
-          <tr>
-            <td><label htmlFor="dayRate">Day Rate</label></td>
-            <td><FuelSavingsTextInput onChange={this.calculatorKeypress} name="dayRate"
-                                      value={contractorCalculator.dayRate}/>
-            </td>
-          </tr>
-          <tr>
-            <td><label htmlFor="weeks">Weeks</label></td>
-            <td><FuelSavingsTextInput onChange={this.calculatorKeypress} name="weeks"
-                                      value={contractorCalculator.weeks}/>
-            </td>
-          </tr>
-          <tr>
-            <td><label htmlFor="wages">Wages</label></td>
-            <td><FuelSavingsTextInput onChange={this.calculatorKeypress} name="wages"
-                                      value={contractorCalculator.wages}/>
-            </td>
-          </tr>
-          <tr>
-            <td><label htmlFor="expenses">Daily Mileage</label></td>
-            <td><FuelSavingsTextInput onChange={this.calculatorKeypress} name="expenses"
-                                      value={contractorCalculator.expenses}/>
-            </td>
-          </tr>
-          <tr>
-            <td><label htmlFor="expenses">Expenses</label></td>
-            <td><FuelSavingsTextInput onChange={this.calculatorKeypress} name="expenses"
-                                      value={contractorCalculator.expenses}/>
-            </td>
-          </tr>
-          {/*<tr>*/}
-          {/*<td><label>Date Modified</label></td>*/}
-          {/*<td>{contractorCalculator.dateModified}</td>*/}
-          {/*</tr>*/}
-          </tbody>
-        </table>
+
+        <FuelSavingsTextInput floatingLabelText="Enter Day Rate" onChange={this.calculatorKeypress} name="dayRate"
+                              value={contractorCalculator.dayRate}/>
+        <br/>
+        <FuelSavingsTextInput floatingLabelText="Working Weeks" onChange={this.calculatorKeypress} name="weeks"
+                              value={contractorCalculator.weeks}/>
+        <br/>
+        <FuelSavingsTextInput floatingLabelText="Wages" onChange={this.calculatorKeypress} name="wages"
+                              value={contractorCalculator.wages}/>
+        <br/>
+        <FuelSavingsTextInput floatingLabelText="Expenses" onChange={this.calculatorKeypress} name="expenses"
+                              value={contractorCalculator.expenses}/>
+        <br/>
+        <FuelSavingsTextInput floatingLabelText="Daily Mileage" onChange={this.calculatorKeypress} name="expenses"
+                               value={contractorCalculator.expenses}/>
+        <br/>
         <MuiThemeProvider>
           <Toggle label="Show more detail"
-            onToggle={this.handleAdvancedToggle}
-                  toggled = {contractorCalculator.advanced}
+                  onToggle={this.handleAdvancedToggle}
+                  toggled={contractorCalculator.advanced}
           />
         </MuiThemeProvider>
 
-
         <hr/>
 
-        {contractorCalculator.necessaryDataIsProvidedToCalculateSavings &&
-        <Results advanced={contractorCalculator.advanced} results={contractorCalculator.results}/>}
-        {/*<input type="submit" value="Save" onClick={this.save}/>*/}
+          {contractorCalculator.necessaryDataIsProvidedToCalculateSavings &&
+          <Results advanced={contractorCalculator.advanced} results={contractorCalculator.results}/>}
+          {/*<input type="submit" value="Save" onClick={this.save}/>*/}
 
-        {/*<MuiThemeProvider>*/}
-        {/*<RaisedButton type="submit" label="Save" onClick={this.save}/>*/}
+          {/*<MuiThemeProvider>*/}
+          {/*<RaisedButton type="submit" label="Save" onClick={this.save}/>*/}
 
-        {/*</MuiThemeProvider>*/}
+          {/*</MuiThemeProvider>*/}
 
 
       </div>
-    );
+  );
   }
-}
+  }
 
-ContractCalculatorForm.propTypes = {
-  save: PropTypes.func.isRequired,
-  calculate: PropTypes.func.isRequired,
-  toggleAdvanced: PropTypes.func.isRequired,
-  contractorCalculator: PropTypes.object.isRequired
-};
+  ContractCalculatorForm.propTypes = {
+    save: PropTypes.func.isRequired,
+    calculate: PropTypes.func.isRequired,
+    toggleAdvanced: PropTypes.func.isRequired,
+    contractorCalculator: PropTypes.object.isRequired
+  };
 
-export default ContractCalculatorForm;
+  export default ContractCalculatorForm;
