@@ -1,5 +1,6 @@
 import mathHelper from './mathHelper';
 import NumberFormatter from './numberFormatter';
+import * as consts from './contractorCAlculatorConstants';
 
 export default class ContractTakeHomeCalculator {
 
@@ -15,15 +16,15 @@ export default class ContractTakeHomeCalculator {
     const {dayRate, weeks, wages, expenses} = settings;
 
     const days = 5;
-    const paLimit = 11000;
-    const divTaxFreeAllowance = 5000;
-    const taxRate = 0.20;
-
-    const basic = 43000;
-    const higher = 150000;
-
-    const basicTaxRate = 0.075;
-    const higherTaxRate = 0.325;
+    // const paLimit = 11000;
+    // const divTaxFreeAllowance = 5000;
+    // const taxRate = 0.20;
+    //
+    // const basic = 43000;
+    // const higher = 150000;
+    //
+    // const basicTaxRate = 0.075;
+    // const higherTaxRate = 0.325;
 
     // let dayrate = 400;
     // let weeks = 46;
@@ -32,16 +33,16 @@ export default class ContractTakeHomeCalculator {
 
     let grossEarned = ((dayRate * days) * weeks);
     let profitBeforeTax = grossEarned - wages - expenses;//grossEarned  - (wages + expenses);
-    let corporationTax = (profitBeforeTax * taxRate);
+    let corporationTax = (profitBeforeTax * consts.CORPORATION_TAX);
     let profitAfterTax = profitBeforeTax - corporationTax;
 
-    let personalAllowanceLeft = (paLimit - wages) + divTaxFreeAllowance;
+    let personalAllowanceLeft = (consts.PERSONAL_ALLOWANCE_LIMIT - wages) + consts.DIVIDEND_TAX_FREE_ALLOWANCE;
 
-    let basicTaxable = (basic - personalAllowanceLeft - wages);
-    let tax1 = basicTaxRate * basicTaxable;
+    let basicTaxable = (consts.BASIC_TAX_THRESHOLD - personalAllowanceLeft - wages);
+    let tax1 = consts.BASIC_TAX_RATE * basicTaxable;
 
     let higherTaxable =(profitAfterTax - basicTaxable - personalAllowanceLeft);
-    let tax2 = higherTaxRate * higherTaxable;
+    let tax2 = consts.HIGHER_TAX_RATE * higherTaxable;
 
     let divToTax = tax1 + tax2;
 
@@ -58,10 +59,12 @@ export default class ContractTakeHomeCalculator {
       profitBeforeTax:  NumberFormatter.getCurrencyFormattedNumber(profitBeforeTax),
       corpTax:  NumberFormatter.getCurrencyFormattedNumber(corporationTax),
       profitAfterTax:  NumberFormatter.getCurrencyFormattedNumber(profitAfterTax),
+
       // basic: basic,
       personalAllowanceLeft:  NumberFormatter.getCurrencyFormattedNumber(personalAllowanceLeft),
       basicTaxable:  NumberFormatter.getCurrencyFormattedNumber(basicTaxable),
       tax1:  NumberFormatter.getCurrencyFormattedNumber(tax1),
+
       // higher: higher,
       tax2:  NumberFormatter.getCurrencyFormattedNumber(tax2),
       divToTax:  NumberFormatter.getCurrencyFormattedNumber(divToTax),
