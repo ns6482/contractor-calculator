@@ -1,8 +1,10 @@
 import React, {PropTypes} from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {List, ListItem} from 'material-ui/List';
-import Paper from 'material-ui/Paper';
 import Subheader from 'material-ui/Subheader';
+import {BASIC_TAX_THRESHOLD} from "../utils/contractorCAlculatorConstants";
+import {DIVIDEND_TAX_FREE_ALLOWANCE} from "../utils/contractorCAlculatorConstants";
+import {PERSONAL_ALLOWANCE_LIMIT} from "../utils/contractorCAlculatorConstants";
 
 
 // This is a stateless functional component. (Also known as pure or dumb component)
@@ -16,16 +18,22 @@ const Results = ({advanced, results}) => {
   // variables are set above.
   return (
     <MuiThemeProvider>
-      <Paper zDepth={5}>
       <List>
         <ListItem>Turnover: <strong>{results.grossEarned}</strong></ListItem>
-        <ListItem>Profit before tax: {results.profitBeforeTax}</ListItem>
-        <ListItem>Corporation Tax 20%: {results.corpTax}</ListItem>
-        <ListItem>Profit after tax: {results.profitAfterTax}</ListItem>
+        <ListItem>Profit before tax: {results.profitBeforeTax}<em> (i.e. turnover - wages - expenses)</em></ListItem>
+
+        <ListItem>Corporation Tax: {results.corpTax} (<em>20% of {results.profitBeforeTax}</em>)</ListItem>
+        <ListItem>Profit after tax: {results.profitAfterTax} (<em>Profit before tax - profit after tax)</em></ListItem>
         {advanced ?
           <div>
             <Subheader>Dividand Tax</Subheader>
-            <ListItem>Basic Rate Tax (7.5%): {results.tax1}</ListItem>
+            <em>The personal allowance (the amount of income you can receive before paying any income tax) is £11,000 in
+              2016/17.
+              The personal allowance remaining is {PERSONAL_ALLOWANCE_LIMIT} - wages + {DIVIDEND_TAX_FREE_ALLOWANCE}
+               (dividend tax free allowance)</em>
+            <ListItem>Basic Rate Tax (7.5%): {results.tax1} (<em>Basic rate is the threshold ({BASIC_TAX_THRESHOLD} -
+              personal allowance remaining - wages </em>)
+            </ListItem>
             <ListItem>Higher Rate Tax (32.5%): {results.tax2}</ListItem>
           </div>
           : null}
@@ -34,7 +42,6 @@ const Results = ({advanced, results}) => {
         <ListItem><strong>Take Home Pay After Tax: {results.takeHomeAfterPersonalTax}</strong></ListItem>
         <ListItem><h2>Percentage Take Home Pay: {results.percTakeHome}</h2></ListItem>
       </List>
-        </Paper>
     </MuiThemeProvider>
 
   );

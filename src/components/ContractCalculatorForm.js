@@ -52,6 +52,12 @@ class ContractCalculatorForm extends React.Component {
             </td>
           </tr>
           <tr>
+            <td><label htmlFor="expenses">Daily Mileage</label></td>
+            <td><FuelSavingsTextInput onChange={this.calculatorKeypress} name="expenses"
+                                      value={contractorCalculator.expenses}/>
+            </td>
+          </tr>
+          <tr>
             <td><label htmlFor="expenses">Expenses</label></td>
             <td><FuelSavingsTextInput onChange={this.calculatorKeypress} name="expenses"
                                       value={contractorCalculator.expenses}/>
