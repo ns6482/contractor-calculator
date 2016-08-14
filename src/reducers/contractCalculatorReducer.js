@@ -3,6 +3,7 @@ import calculator from '../utils/contractorTakeHomeCalculator';
 import dateHelper from '../utils/dateHelper';
 // import objectAssign from 'object-assign';
 import initialState from './initialState';
+import {EXPENSE_DETAIL} from "../constants/actionTypes";
 
 // IMPORTANT: Note that with Redux, state should NEVER be changed.
 // State is considered immutable. Instead,
@@ -21,6 +22,18 @@ export default function contractCalculatorReducer(state = initialState.contracto
     case TOGGLE_ADVANCED:
       newState = Object.assign({}, state);
       newState.advanced = !newState.advanced;
+      return newState;
+
+    case EXPENSE_DETAIL:
+      newState = Object.assign({}, state);
+      newState.expenseDetail = !newState.expenseDetail;
+
+      // if (newState.expenseDetail) {
+      //   // set expenses to mileage + accountancy fees and other
+      // } else {
+      //   //
+      // }
+
       return newState;
 
     case CALCULATE_TAKE_HOME_PAY:

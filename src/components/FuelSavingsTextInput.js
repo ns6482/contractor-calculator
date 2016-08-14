@@ -16,6 +16,7 @@ const FuelSavingsTextInput = (props) => {
         floatingLabelText={props.floatingLabelText}
         placeholder={props.placeholder}
         value={props.value}
+        disabled={props.disabled}
         onChange={handleChange}/>
     </MuiThemeProvider>
   );
@@ -26,6 +27,7 @@ FuelSavingsTextInput.propTypes = {
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
   floatingLabelText: PropTypes.string,
+  disabled: PropTypes.boolean,
   value: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number

@@ -10,6 +10,7 @@ export const ContractCalculatorPage = (props) => {
       save={props.actions.saveTakeHomePay}
       calculate={props.actions.calculatorTakeHomePay}
       toggleAdvanced={props.actions.toggleAdvance}
+      toggleExpenseDetail={props.actions.toggleExpenseDetail}
       contractorCalculator={props.contractorCalculator}
     />
   );

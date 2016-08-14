@@ -4,6 +4,13 @@ import FuelSavingsTextInput from './FuelSavingsTextInput';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {Toggle} from 'material-ui';
 
+/**
+ * Todo expenses, mileage breakdown calculation
+ * disclaimer
+ * more written text
+ * fiverr design
+ */
+
 class ContractCalculatorForm extends React.Component {
   constructor(props, context) {
     super(props, context);
@@ -11,6 +18,7 @@ class ContractCalculatorForm extends React.Component {
     this.save = this.save.bind(this);
     this.calculatorKeypress = this.calculatorKeypress.bind(this);
     this.handleAdvancedToggle = this.handleAdvancedToggle.bind(this);
+    this.handleExpenseDetailToggle = this.handleExpenseDetailToggle.bind(this);
   }
 
   calculatorKeypress(name, value) {
@@ -19,6 +27,10 @@ class ContractCalculatorForm extends React.Component {
 
   handleAdvancedToggle() {
     this.props.toggleAdvanced(this.props.contractorCalculator);
+  }
+
+  handleExpenseDetailToggle() {
+    this.props.toggleExpenseDetail(this.props.contractorCalculator);
   }
 
   save() {
@@ -31,24 +43,35 @@ class ContractCalculatorForm extends React.Component {
     return (
       <div>
         <h2>Take Home Pay Calculator</h2>
-
-        <FuelSavingsTextInput floatingLabelText="Enter Day Rate" onChange={this.calculatorKeypress} name="dayRate"
+        <FuelSavingsTextInput floatingLabelText="Day Rate" onChange={this.calculatorKeypress} name="dayRate"
                               value={contractorCalculator.dayRate}/>
         <br/>
         <FuelSavingsTextInput floatingLabelText="Working Weeks" onChange={this.calculatorKeypress} name="weeks"
                               value={contractorCalculator.weeks}/>
         <br/>
-        <FuelSavingsTextInput floatingLabelText="Wages" onChange={this.calculatorKeypress} name="wages"
+        <FuelSavingsTextInput floatingLabelText="Wages (no NI to pay on 8040)" onChange={this.calculatorKeypress}
+                              name="wages"
                               value={contractorCalculator.wages}/>
         <br/>
+        <MuiThemeProvider>
+          <Toggle label="Expenses breakdown"
+                  onToggle={this.handleExpenseDetailToggle}
+                  toggled={contractorCalculator.expenseDetail}
+          />
+        </MuiThemeProvider>
+
+        {contractorCalculator.expenseDetail ?
+
+          <FuelSavingsTextInput floatingLabelText="Daily Mileage" onChange={this.calculatorKeypress}
+                                name="mileage"
+                                value={contractorCalculator.mileage}/>
+          : null }
+
         <FuelSavingsTextInput floatingLabelText="Expenses" onChange={this.calculatorKeypress} name="expenses"
-                              value={contractorCalculator.expenses}/>
-        <br/>
-        <FuelSavingsTextInput floatingLabelText="Daily Mileage" onChange={this.calculatorKeypress} name="expenses"
-                               value={contractorCalculator.expenses}/>
+                              disabled= {contractorCalculator.expenseDetail} value={contractorCalculator.expenses}/>
         <br/>
         <MuiThemeProvider>
-          <Toggle label="Show more detail"
+          <Toggle label="Show how dividend tax calculated"
                   onToggle={this.handleAdvancedToggle}
                   toggled={contractorCalculator.advanced}
           />
@@ -56,26 +79,19 @@ class ContractCalculatorForm extends React.Component {
 
         <hr/>
 
-          {contractorCalculator.necessaryDataIsProvidedToCalculateSavings &&
-          <Results advanced={contractorCalculator.advanced} results={contractorCalculator.results}/>}
-          {/*<input type="submit" value="Save" onClick={this.save}/>*/}
-
-          {/*<MuiThemeProvider>*/}
-          {/*<RaisedButton type="submit" label="Save" onClick={this.save}/>*/}
-
-          {/*</MuiThemeProvider>*/}
-
-
+        {contractorCalculator.necessaryDataIsProvidedToCalculateSavings &&
+        <Results advanced={contractorCalculator.advanced} results={contractorCalculator.results}/>}
       </div>
-  );
+    );
   }
-  }
+}
 
-  ContractCalculatorForm.propTypes = {
-    save: PropTypes.func.isRequired,
-    calculate: PropTypes.func.isRequired,
-    toggleAdvanced: PropTypes.func.isRequired,
-    contractorCalculator: PropTypes.object.isRequired
-  };
+ContractCalculatorForm.propTypes = {
+  save: PropTypes.func.isRequired,
+  calculate: PropTypes.func.isRequired,
+  toggleAdvanced: PropTypes.func.isRequired,
+  toggleExpenseDetail: PropTypes.func.isRequired,
+  contractorCalculator: PropTypes.object.isRequired
+};
 
-  export default ContractCalculatorForm;
+export default ContractCalculatorForm;

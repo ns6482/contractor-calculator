@@ -11,3 +11,7 @@ export function calculatorTakeHomePay(settings, fieldName, value) {
 export function toggleAdvance (settings)  {
   return {type: types.TOGGLE_ADVANCED, settings};
 }
+
+export function toggleExpenseDetail(settings) {
+  return {type: types.EXPENSE_DETAIL, settings};
+}
