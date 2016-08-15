@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import Results from './Results';
-import FuelSavingsTextInput from './FuelSavingsTextInput';
+import TextInput from './TextInput';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {Toggle} from 'material-ui';
 
@@ -43,15 +43,15 @@ class ContractCalculatorForm extends React.Component {
     return (
       <div>
         <h2>Take Home Pay Calculator</h2>
-        <FuelSavingsTextInput floatingLabelText="Day Rate" onChange={this.calculatorKeypress} name="dayRate"
-                              value={contractorCalculator.dayRate}/>
+        <TextInput floatingLabelText="Day Rate" onChange={this.calculatorKeypress} name="dayRate"
+                   value={contractorCalculator.dayRate}/>
         <br/>
-        <FuelSavingsTextInput floatingLabelText="Working Weeks" onChange={this.calculatorKeypress} name="weeks"
-                              value={contractorCalculator.weeks}/>
+        <TextInput floatingLabelText="Working Weeks" onChange={this.calculatorKeypress} name="weeks"
+                   value={contractorCalculator.weeks}/>
         <br/>
-        <FuelSavingsTextInput floatingLabelText="Wages (no NI to pay on 8040)" onChange={this.calculatorKeypress}
-                              name="wages"
-                              value={contractorCalculator.wages}/>
+        <TextInput floatingLabelText="Wages (no NI to pay on 8040)" onChange={this.calculatorKeypress}
+                   name="wages"
+                   value={contractorCalculator.wages}/>
         <br/>
         <MuiThemeProvider>
           <Toggle label="Expenses breakdown"
@@ -62,13 +62,29 @@ class ContractCalculatorForm extends React.Component {
 
         {contractorCalculator.expenseDetail ?
 
-          <FuelSavingsTextInput floatingLabelText="Daily Mileage" onChange={this.calculatorKeypress}
-                                name="mileage"
-                                value={contractorCalculator.mileage}/>
+          <div>
+          <TextInput floatingLabelText="Daily Mileage" onChange={this.calculatorKeypress}
+                     name="mileage"
+                     value={contractorCalculator.mileage}/>
+            <br/>
+            <TextInput floatingLabelText="Accountacy Fees (monthly)" onChange={this.calculatorKeypress}
+                       name="accountancyFees"
+                       value={contractorCalculator.accountancyFees}/>
+            <br/>
+            <TextInput floatingLabelText="Insurances" onChange={this.calculatorKeypress}
+                       name="insurance"
+                       value={contractorCalculator.insurance}/>
+            <br/>
+            <TextInput floatingLabelText="Other (annual)" onChange={this.calculatorKeypress}
+                       name="other"
+                       value={contractorCalculator.other}/>
+            <br/>
+
+            </div>
           : null }
 
-        <FuelSavingsTextInput floatingLabelText="Expenses" onChange={this.calculatorKeypress} name="expenses"
-                              disabled= {contractorCalculator.expenseDetail} value={contractorCalculator.expenses}/>
+        <TextInput floatingLabelText="Expenses" onChange={this.calculatorKeypress} name="expenses"
+                   disabled= {contractorCalculator.expenseDetail} value={contractorCalculator.expenses}/>
         <br/>
         <MuiThemeProvider>
           <Toggle label="Show how dividend tax calculated"

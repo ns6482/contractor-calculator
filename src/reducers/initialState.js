@@ -7,9 +7,8 @@ export default {
     expenseDetail: false,
     expenses: 5000,
     mileage: 0,
-    accountancy: 0,
+    accountancyFees: 0,
     insurance: 0,
-    food: 0,
     other: 0,
     advanced: false,
     results: {

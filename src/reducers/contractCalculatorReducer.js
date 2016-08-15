@@ -27,12 +27,7 @@ export default function contractCalculatorReducer(state = initialState.contracto
     case EXPENSE_DETAIL:
       newState = Object.assign({}, state);
       newState.expenseDetail = !newState.expenseDetail;
-
-      // if (newState.expenseDetail) {
-      //   // set expenses to mileage + accountancy fees and other
-      // } else {
-      //   //
-      // }
+      newState.expenses = calculator.calculateExpenses(newState);
 
       return newState;
 
@@ -41,6 +36,8 @@ export default function contractCalculatorReducer(state = initialState.contracto
       newState[action.fieldName] = action.value;
       newState.necessaryDataIsProvidedToCalculateSavings = calculator.necessaryDataIsProvidedToCalculateSavings(newState);
       newState.dateModified = dateHelper.getFormattedDateTime(new Date());
+
+      newState.expenses = calculator.calculateExpenses(newState);
 
       if (newState.necessaryDataIsProvidedToCalculateSavings) {
         newState.results = calculator.calculate(newState);

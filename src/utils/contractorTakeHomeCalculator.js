@@ -1,14 +1,44 @@
 import mathHelper from './mathHelper';
 import NumberFormatter from './numberFormatter';
-import * as consts from './contractorCAlculatorConstants';
+import * as consts from './contractorCalculatorConstants';
 
 export default class ContractTakeHomeCalculator {
 
-  static necessaryDataIsProvidedToCalculateSavings (settings) {
+  static necessaryDataIsProvidedToCalculateSavings(settings) {
     return settings.dayRate > 0
       && settings.weeks > 0
       && settings.wages > 0
       && settings.expenses >= 0;
+  }
+
+  static calculateExpenses(settings) {
+
+    if (!settings.expenseDetail)
+      return settings.expenses;
+
+    let mileage = 0;
+    if (settings.mileage > 0)
+      mileage = ((settings.mileage * 0.45) * 5) * settings.weeks;
+
+    let months = 0;
+    if (settings.weeks > 4)
+      months = (settings.weeks / 4);
+
+    let accountancy = 0;
+    if (settings.accountancyFees > 0)
+      accountancy = settings.accountancyFees * months;
+
+    let insurance = 0;
+
+    if (settings.insurance > 0)
+      insurance = settings.insurance * months;
+
+    let other = 0;
+    if (settings.other > 0)
+      other = settings.other * months;
+
+    return parseFloat(mileage) + parseFloat(insurance) + parseFloat(accountancy) + parseFloat(other);
+
   }
 
   static calculate(settings) {
@@ -41,7 +71,7 @@ export default class ContractTakeHomeCalculator {
     let basicTaxable = (consts.BASIC_TAX_THRESHOLD - personalAllowanceLeft - wages);
     let tax1 = consts.BASIC_TAX_RATE * basicTaxable;
 
-    let higherTaxable =(profitAfterTax - basicTaxable - personalAllowanceLeft);
+    let higherTaxable = (profitAfterTax - basicTaxable - personalAllowanceLeft);
     let tax2 = consts.HIGHER_TAX_RATE * higherTaxable;
 
     let divToTax = tax1 + tax2;
@@ -49,27 +79,27 @@ export default class ContractTakeHomeCalculator {
     let takeHome = parseFloat(profitAfterTax) + parseFloat(wages);
     let takeHomeAfterPersonalTax = parseFloat(takeHome) - parseFloat(divToTax);
 
-    let percTakeHome = (takeHomeAfterPersonalTax/grossEarned) * 100;
+    let percTakeHome = (takeHomeAfterPersonalTax / grossEarned) * 100;
 
     return {
-      grossEarned:  NumberFormatter.getCurrencyFormattedNumber(grossEarned),
+      grossEarned: NumberFormatter.getCurrencyFormattedNumber(grossEarned),
       // salary: wages,
       // expenses: expenses,
 
-      profitBeforeTax:  NumberFormatter.getCurrencyFormattedNumber(profitBeforeTax),
-      corpTax:  NumberFormatter.getCurrencyFormattedNumber(corporationTax),
-      profitAfterTax:  NumberFormatter.getCurrencyFormattedNumber(profitAfterTax),
+      profitBeforeTax: NumberFormatter.getCurrencyFormattedNumber(profitBeforeTax),
+      corpTax: NumberFormatter.getCurrencyFormattedNumber(corporationTax),
+      profitAfterTax: NumberFormatter.getCurrencyFormattedNumber(profitAfterTax),
 
       // basic: basic,
-      personalAllowanceLeft:  NumberFormatter.getCurrencyFormattedNumber(personalAllowanceLeft),
-      basicTaxable:  NumberFormatter.getCurrencyFormattedNumber(basicTaxable),
-      tax1:  NumberFormatter.getCurrencyFormattedNumber(tax1),
+      personalAllowanceLeft: NumberFormatter.getCurrencyFormattedNumber(personalAllowanceLeft),
+      basicTaxable: NumberFormatter.getCurrencyFormattedNumber(basicTaxable),
+      tax1: NumberFormatter.getCurrencyFormattedNumber(tax1),
 
       // higher: higher,
-      tax2:  NumberFormatter.getCurrencyFormattedNumber(tax2),
-      divToTax:  NumberFormatter.getCurrencyFormattedNumber(divToTax),
+      tax2: NumberFormatter.getCurrencyFormattedNumber(tax2),
+      divToTax: NumberFormatter.getCurrencyFormattedNumber(divToTax),
       takeHome: NumberFormatter.getCurrencyFormattedNumber(takeHome),
-      takeHomeAfterPersonalTax:  NumberFormatter.getCurrencyFormattedNumber(takeHomeAfterPersonalTax),
+      takeHomeAfterPersonalTax: NumberFormatter.getCurrencyFormattedNumber(takeHomeAfterPersonalTax),
       percTakeHome: `${percTakeHome.toFixed(0)}%`
     }
 

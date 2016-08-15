@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import  {TextField} from 'material-ui';
 
-const FuelSavingsTextInput = (props) => {
+const TextInput = (props) => {
 
   const handleChange = (e) => {
     props.onChange(props.name, e.target.value);
@@ -22,7 +22,7 @@ const FuelSavingsTextInput = (props) => {
   );
 };
 
-FuelSavingsTextInput.propTypes = {
+TextInput.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
@@ -34,4 +34,4 @@ FuelSavingsTextInput.propTypes = {
   ])
 };
 
-export default FuelSavingsTextInput;
+export default TextInput;

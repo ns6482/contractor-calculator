@@ -9,7 +9,7 @@ import {
   BASIC_TAX_RATE,
   HIGHER_TAX_RATE,
   HIGHER_TAX_THRESHOLD
-} from "../utils/contractorCAlculatorConstants";
+} from "../utils/contractorCalculatorConstants";
 
 // This is a stateless functional component. (Also known as pure or dumb component)
 // More info: https://facebook.github.io/react/blog/2015/10/07/react-v0.14.html#stateless-functional-components
