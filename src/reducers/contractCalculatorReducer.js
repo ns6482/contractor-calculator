@@ -26,8 +26,12 @@ export default function contractCalculatorReducer(state = initialState.contracto
 
     case EXPENSE_DETAIL:
       newState = Object.assign({}, state);
+      newState.necessaryDataIsProvidedToCalculateSavings = calculator.necessaryDataIsProvidedToCalculateSavings(newState);
       newState.expenseDetail = !newState.expenseDetail;
       newState.expenses = calculator.calculateExpenses(newState);
+      if (newState.necessaryDataIsProvidedToCalculateSavings) {
+        newState.results = calculator.calculate(newState);
+      }
 
       return newState;
 

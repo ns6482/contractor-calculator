@@ -9,8 +9,8 @@ import NotFoundPage from './components/NotFoundPage.js';
 
 export default (
   <Route path="/" component={App}>
-    <IndexRoute component={HomePage}/>
-    <Route path="contractor-calculator" component={ContractorCalculatorPage}/>
+    <IndexRoute component={ContractorCalculatorPage}/>
+    {/*<Route path="contractor-calculator" component={ContractorCalculatorPage}/>*/}
     <Route path="about" component={AboutPage}/>
     <Route path="*" component={NotFoundPage}/>
   </Route>

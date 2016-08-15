@@ -6,8 +6,8 @@ const App = (props) => {
     <div>
       <IndexLink to="/">Home</IndexLink>
       {' | '}
-      <Link to="/contractor-calculator">Calculate Take Home Pay</Link>
-      {' | '}
+      {/*<Link to="/contractor-calculator">Calculate Take Home Pay</Link>*/}
+      {/*{' | '}*/}
       <Link to="/about">About</Link>
       <br/>
       {props.children}
