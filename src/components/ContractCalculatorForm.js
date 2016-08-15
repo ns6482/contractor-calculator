@@ -75,7 +75,7 @@ class ContractCalculatorForm extends React.Component {
                        name="insurance"
                        value={contractorCalculator.insurance}/>
             <br/>
-            <TextInput floatingLabelText="Other (annual)" onChange={this.calculatorKeypress}
+            <TextInput floatingLabelText="Other (monthly)" onChange={this.calculatorKeypress}
                        name="other"
                        value={contractorCalculator.other}/>
             <br/>
@@ -83,7 +83,7 @@ class ContractCalculatorForm extends React.Component {
             </div>
           : null }
 
-        <TextInput floatingLabelText="Expenses" onChange={this.calculatorKeypress} name="expenses"
+        <TextInput floatingLabelText="Expenses (annual)" onChange={this.calculatorKeypress} name="expenses"
                    disabled= {contractorCalculator.expenseDetail} value={contractorCalculator.expenses}/>
         <br/>
         <MuiThemeProvider>
