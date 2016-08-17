@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "description": "Calculator contractor take home pay rate",
   "engines": {
-    "npm": ">=3"
+    "node": "5.2.0",
+    "npm": "3.3.12"
   },
   "scripts": {
     "preinstall": "node tools/nodeVersionCheck.js",
