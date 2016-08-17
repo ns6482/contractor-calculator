@@ -1,4 +1,3 @@
-import mathHelper from './mathHelper';
 import NumberFormatter from './numberFormatter';
 import * as consts from './contractorCalculatorConstants';
 
@@ -101,7 +100,6 @@ export default class ContractTakeHomeCalculator {
       takeHome: NumberFormatter.getCurrencyFormattedNumber(takeHome),
       takeHomeAfterPersonalTax: NumberFormatter.getCurrencyFormattedNumber(takeHomeAfterPersonalTax),
       percTakeHome: `${percTakeHome.toFixed(0)}%`
-    }
-
+    };
   }
 }
