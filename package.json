@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "description": "Calculator contractor take home pay rate",
   "engines": {
-    "npm": ">=3"
+    "node": "5.2.0",
+    "npm": "3.10.7"
   },
   "scripts": {
     "preinstall": "node tools/nodeVersionCheck.js",
@@ -37,9 +38,7 @@
     "react-router": "2.6.0",
     "react-router-redux": "4.0.5",
     "react-tap-event-plugin": "1.0.0",
-    "redux": "3.5.2"
-  },
-  "devDependencies": {
+    "redux": "3.5.2",
     "autoprefixer": "6.3.7",
     "babel-cli": "6.11.4",
     "babel-core": "6.11.4",
