@@ -81,7 +81,7 @@ class ContractCalculatorForm extends React.Component {
             <br/>
 
             </div>
-          : null }
+          : null}
 
         <TextInput floatingLabelText="Expenses (annual)" onChange={this.calculatorKeypress} name="expenses"
                    disabled= {contractorCalculator.expenseDetail} value={contractorCalculator.expenses}/>

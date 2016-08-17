@@ -1,9 +1,7 @@
-import {SAVE_CONFIGURATION, CALCULATE_TAKE_HOME_PAY, TOGGLE_ADVANCED} from '../constants/actionTypes';
+import {SAVE_CONFIGURATION, CALCULATE_TAKE_HOME_PAY, TOGGLE_ADVANCED,EXPENSE_DETAIL} from '../constants/actionTypes';
 import calculator from '../utils/contractorTakeHomeCalculator';
 import dateHelper from '../utils/dateHelper';
-// import objectAssign from 'object-assign';
 import initialState from './initialState';
-import {EXPENSE_DETAIL} from "../constants/actionTypes";
 
 // IMPORTANT: Note that with Redux, state should NEVER be changed.
 // State is considered immutable. Instead,
