@@ -1,5 +1,4 @@
 import React, {PropTypes} from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {List, ListItem} from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 import {
@@ -21,7 +20,6 @@ const Results = ({advanced, results}) => {
   // composed within the parentheses. Return is necessary here because some
   // variables are set above.
   return (
-    <MuiThemeProvider>
       <List>
         <ListItem><strong>Turnover: </strong><strong>{results.grossEarned}</strong></ListItem>
         <ListItem><strong>Profit before tax: </strong>{results.profitBeforeTax}<em> (i.e. turnover - wages -
@@ -53,8 +51,6 @@ const Results = ({advanced, results}) => {
         <ListItem><strong>Total Dividend Tax: </strong>{results.divToTax}</ListItem>
         <ListItem><strong>Take Home Pay After Dividend Tax: {results.takeHomeAfterPersonalTax} ({results.percTakeHome})</strong></ListItem>
       </List>
-    </MuiThemeProvider>
-
   );
 };
 

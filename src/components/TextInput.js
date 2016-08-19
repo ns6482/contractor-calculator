@@ -1,5 +1,4 @@
 import React, {PropTypes} from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import  {TextField} from 'material-ui';
 
 const TextInput = (props) => {
@@ -9,7 +8,6 @@ const TextInput = (props) => {
   };
 
   return (
-    <MuiThemeProvider>
       <TextField
         className="small"
         type="text"
@@ -18,7 +16,6 @@ const TextInput = (props) => {
         value={props.value}
         disabled={props.disabled}
         onChange={handleChange}/>
-    </MuiThemeProvider>
   );
 };
 

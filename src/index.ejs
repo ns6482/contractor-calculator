@@ -5,7 +5,6 @@
   For more info on ejs, see http://www.embeddedjs.com/. For examples of using it with htmlWebpackPlugin, see https://github.com/jaketrent/html-webpack-template/blob/master/index.ejs
   -->
 <head>
-  <!--<link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css'>-->
   <!--
     The htmlWebpackPlugin will parse the logic below so that trackJS is only added to the production version of index.html (since only webpack.config.prod.js provides the trackJS token)
     This is an example of how to add features to index.html for only one environment.
@@ -32,6 +31,12 @@
 
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta charset="utf-8"/>
+  <!-- Use minimum-scale=1 to enable GPU rasterization -->
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, user-scalable=0, maximum-scale=1, minimum-scale=1"
+  >
+  <link rel="stylesheet" type="text/css" href="styles/main.css">
   <title>Contractor Take Home Pay Calculator UK</title>
 </head>
 <body>

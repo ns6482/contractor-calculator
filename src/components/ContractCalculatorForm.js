@@ -1,7 +1,6 @@
 import React, {PropTypes} from 'react';
 import Results from './Results';
 import TextInput from './TextInput';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {Toggle} from 'material-ui';
 
 /**
@@ -53,12 +52,10 @@ class ContractCalculatorForm extends React.Component {
                    name="wages"
                    value={contractorCalculator.wages}/>
         <br/>
-        <MuiThemeProvider>
           <Toggle label="Expenses breakdown"
                   onToggle={this.handleExpenseDetailToggle}
                   toggled={contractorCalculator.expenseDetail}
           />
-        </MuiThemeProvider>
 
         {contractorCalculator.expenseDetail ?
 
@@ -86,12 +83,10 @@ class ContractCalculatorForm extends React.Component {
         <TextInput floatingLabelText="Expenses (annual)" onChange={this.calculatorKeypress} name="expenses"
                    disabled= {contractorCalculator.expenseDetail} value={contractorCalculator.expenses}/>
         <br/>
-        <MuiThemeProvider>
           <Toggle label="Show how dividend tax calculated"
                   onToggle={this.handleAdvancedToggle}
                   toggled={contractorCalculator.advanced}
           />
-        </MuiThemeProvider>
 
         <hr/>
 
