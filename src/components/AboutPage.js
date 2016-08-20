@@ -7,7 +7,7 @@ const AboutPage = () => {
     <div>
       <h2 className="alt-header">About</h2>
       <p>
-        Disclaimer: the calculator is for illustrative purposes only and are not a substitute for professional advice.
+        Disclaimer: the calculator is for illustrative purposes only and is not a substitute for professional advice.
       </p>
     </div>
   );
