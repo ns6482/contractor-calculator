@@ -87,7 +87,6 @@ class ContractCalculatorForm extends React.Component {
                   onToggle={this.handleAdvancedToggle}
                   toggled={contractorCalculator.advanced}
           />
-
         <hr/>
 
         {contractorCalculator.necessaryDataIsProvidedToCalculateSavings &&
