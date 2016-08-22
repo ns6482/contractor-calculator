@@ -1,5 +1,4 @@
 /* eslint-disable import/default */
-
 import React from 'react';
 import {render} from 'react-dom';
 import { Provider } from 'react-redux';
@@ -10,7 +9,6 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 
 require('./favicon.ico'); // Tell webpack to load favicon.ico
 import './styles/main.css'; // Yep, that's right. You can import SASS/CSS files too! Webpack will run the associated loader and plug this into the page.
-
 import { syncHistoryWithStore } from 'react-router-redux';
 
 const store = configureStore();
