@@ -71,7 +71,7 @@ export default class ContractTakeHomeCalculator {
     let tax1 = consts.BASIC_TAX_RATE * basicTaxable;
 
     let higherTaxable = (profitAfterTax - basicTaxable - personalAllowanceLeft);
-    let tax2 = consts.HIGHER_TAX_RATE * higherTaxable;
+    let tax2 = higherTaxable <0 ? 0 : consts.HIGHER_TAX_RATE * higherTaxable;
 
     let divToTax = tax1 + tax2;
 
