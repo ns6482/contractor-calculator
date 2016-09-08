@@ -12,7 +12,7 @@ const App = (props) => {
         <Link to="/about">About</Link>
         <br/>
         <p>
-          Please use the following to calculate your take home pay. We are constantly looking to improve this app. Ifyou
+          Please use the following to calculate your take home pay. We are constantly looking to improve this app. If you
           have any suggestions, improvements please <a href="mailto:apps360ltd@gmail.com" target="_top">send us an
           email</a>
         </p>
